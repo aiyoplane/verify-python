@@ -1,0 +1,71 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aiyoplane-verify"
+version = "1.0.2"
+description = "Offline Ed25519 verifier for Aiyo execution receipts. Verify a receipt against Aiyo's published JWKS with no Aiyo-side infrastructure available."
+readme = "README.md"
+license = {text = "Apache-2.0"}
+authors = [
+    {name = "Aiyoplane, Inc.", email = "rashon@aiyoplane.com"},
+]
+requires-python = ">=3.9"
+keywords = [
+    "aiyo",
+    "aiyoplane",
+    "execution-receipt",
+    "ed25519",
+    "jwks",
+    "verify",
+    "authorization",
+    "runtime-decision-point",
+    "rdp",
+    "settlement-verified",
+    "economic-execution-authorization",
+    "aeap",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Security :: Cryptography",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System :: Systems Administration :: Authentication/Directory",
+]
+dependencies = [
+    "cryptography>=42.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+]
+
+[project.scripts]
+aiyo-verify = "aiyoplane_verify.cli:main"
+
+[project.urls]
+Homepage = "https://aiyoplane.com"
+Repository = "https://github.com/aiyoplane/verify-python"
+Issues = "https://github.com/aiyoplane/verify-python/issues"
+Documentation = "https://aiyoplane.com/trust"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+aiyoplane_verify = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
